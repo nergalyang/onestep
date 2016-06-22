@@ -1,0 +1,7 @@
+.recipt{
+  font-size: 1.5rem;
+}
+
+.recipt > *{
+  background-color: #F6F6F6;
+}

@@ -1,0 +1,72 @@
+<section>
+  <div class="page-header">
+    <span data-ng-bind="vm.dish.name"></span>
+    <hr>
+    <img src="{{vm.dish.dishImage}}" alt="{{vm.dish.name}}" class="img-rounded">
+    <br>
+
+    <div class="button-group"
+         data-ng-show="vm.dish.isCurrentUserOwner">
+      <a class="btn btn-primary"
+         data-ui-sref="dishes.edit({ dishId: vm.dish._id })">
+        <i class="glyphicon glyphicon-edit"></i>
+      </a>
+      <a class="btn btn-primary" data-ng-click="vm.remove()">
+        <i class="glyphicon glyphicon-trash"></i>
+      </a>
+      <div class="flyInBtn">
+        <a class="btn btn-primary" data-ng-click="vm.createLocalOrder(vm.dish._id)" onclick="flyIn(this)">
+          <i class="glyphicon glyphicon-shopping-cart"></i>
+        </a>
+        <span>+1</span>
+      </div>
+    </div>
+    <div class="des">
+      <hr>
+
+      <div class="panel panel-info panelForDetail">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Dish Price:</strong></h3>
+        </div>
+        <div class="panel-body" data-ng-bind="vm.dish.price | currency:'￥'"></div>
+      </div>
+      <div class="panel panel-info panelForDetail">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Order Times:</strong></h3>
+        </div>
+        <div class="panel-body" data-ng-bind="vm.dish.orderTimes"></div>
+      </div>
+      <div class="panel panel-info panelForDetail">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Ingredients:</strong></h3>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <tr data-ng-repeat="ingredient in vm.dish.ingredients">
+              <th>{{ingredient.name}}</th>
+              <td colspan='3'>{{ingredient.weight}}g</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="panel panel-info panelForDetail">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Cooking Steps:</strong></h3>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <tr data-ng-repeat="ingredient in vm.dish.ingredients">
+              <th>Step {{$index+1}}</th>
+              <td colspan='3'>{{cookingSteps}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="lead" data-ng-bind="vm.dish.content"></p>
+</section>
+
+
